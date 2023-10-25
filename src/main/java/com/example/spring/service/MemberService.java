@@ -2,16 +2,20 @@ package com.example.spring.service;
 
 import com.example.spring.domain.Member;
 import com.example.spring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository(); 같은 repository를 참조하지않는다 그래서 이걸 맞추기 위해
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository; //직접 new로 생성하는것이 아니라 외부에 넣어주도록 변경한다.
     }
