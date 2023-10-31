@@ -33,12 +33,12 @@ public class MemberService {
 
     private void validateDuplicateMember(Member member) {
 /*      Optional<Member> result = memberRepository.findByName(member.getName()); null이 있을 수 있다면 Optional로 감싸서 Optional안에 Member 객체가 있음으로 Optional안에 여러 메서드를 사용할 수 있다
-        result.ifPresent(member1 -> { //멤버에 값이 있다면
+        result.ifPresent(m -> { //멤버에 값이 있다면
             throw new IllegalStateException("이미 존재하는 회원입니다."); 이미 존재한다고 출력한다.
         });
 */
         memberRepository.findByName(member.getName()) //이미 이 구문자체가 Optional가 반환 타입이기에 가능하다.
-                 .ifPresent(member1 -> {
+                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                  });
     }

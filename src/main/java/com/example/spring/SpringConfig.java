@@ -15,11 +15,11 @@ public class SpringConfig {
 
     private DataSource dataSource;
 
-    @Autowired
+    /*@Autowired
     public SpringConfig(DataSource dataSource){
         this.dataSource = dataSource;
     }
-
+*/
     @Bean
     public MemberService memberService(){
 
@@ -30,6 +30,6 @@ public class SpringConfig {
     public MemberRepository memberRepository(){
 
         //return new MemoryMemberRepository(); 원래 메모리에 저장해놨던걸 구현체만 바꿔 설정해 데이터베이스에 저장한다.
-        return new JdbcMemberRepository(dataSource);
+        return new MemoryMemberRepository();
     }
 }
