@@ -13,7 +13,7 @@ import static org.springframework.jdbc.datasource.DataSourceUtils.getConnection;
 
 public class JdbcMemberRepository implements MemberRepository{
 
-    private final DataSource dataSource;
+    private final DataSource dataSource; //db연동을 위한 데이터 소스
 
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -143,11 +143,15 @@ public class JdbcMemberRepository implements MemberRepository{
     private void close(Connection conn, PreparedStatement pstmt, ResultSet rs){
         try {
             if(rs != null) rs.close();
-            if(conn != null) conn.close();
+            if(conn != null) close(conn);
             if(pstmt != null) pstmt.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void close(Connection conn) throws SQLException {
+        DataSourceUtils.releaseConnection(conn, dataSource);
     }
 }
