@@ -27,7 +27,7 @@ class MemoryMemberRepositoryTest {
 
         Member result =  repository.findById(member.getId()).get();
         //System.out.println("result = "+(result == member));
-        //Assertions.assertEquals(member, result); 기대하는 값을 쓰면 성공이 되고 예를 들어 (member, null)을 쓰면 기대한 값이 아니라는 에러 메세지가 뜬다) 방향이 다른거일수도
+        //org.junit.jupiter.api.Assertions.assertEquals(member, result);
         assertThat(member).isEqualTo(result); //Assertions는 static으로 사용해서 assertThat만 써도 사용할 수 있다.
     }
 
@@ -53,7 +53,7 @@ class MemoryMemberRepositoryTest {
         repository.save(member1);
 
         Member member2 = new Member();
-        member1.setName("spring2");
+        member2.setName("spring2");
         repository.save(member2);
 
         List<Member> result = repository.findAll();

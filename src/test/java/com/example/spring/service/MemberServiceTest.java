@@ -30,7 +30,7 @@ class MemberServiceTest {
     void 회원가입() { //실제 동작하는 코드는 한글을 적기 애매하지만 테스트코드는 직관적으로 볼 수 있게 한글로도 많이 사용한다.
         //given
         Member member = new Member();
-        member.setName("hello");
+        member.setName("Spring");
 
         //when
         Long saveId = memberService.join(member);
