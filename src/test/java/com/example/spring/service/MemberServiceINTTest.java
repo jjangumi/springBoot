@@ -5,6 +5,7 @@ import com.example.spring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +23,7 @@ class MemberServiceINTTest {
     void 회원가입() { //실제 동작하는 코드는 한글을 적기 애매하지만 테스트코드는 직관적으로 볼 수 있게 한글로도 많이 사용한다.
         //given
         Member member = new Member();
-        member.setName("hello");
+        member.setName("hello0");
 
         //when
         Long saveId = memberService.join(member);
